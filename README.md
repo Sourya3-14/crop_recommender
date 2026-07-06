@@ -59,7 +59,7 @@ The trained model files used by the app are:
 
 Make sure you have the following installed:
 
-- Python 3.13 or newer
+- Python 3.12 or newer
 - pip
 - virtual environment support
 
