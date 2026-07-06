@@ -53,6 +53,10 @@ The trained model files used by the app are:
 - Jupyter Notebook
 - HTML/CSS
 
+## Live Application url :
+
+- http://13.207.72.59:8000/ [ the app is hosted using AWS ]
+
 ## Prerequisites
 
 Make sure you have the following installed:
@@ -97,8 +101,15 @@ Then open your browser and visit :
 
 - http://127.0.0.1:8000/
 
-or visit this URL :
-- http://13.207.72.59:8000/
+## Running Using docker
+
+run the folloing commands and visit : http://127.0.0.1:8000/
+
+```
+docker pull attention824/crop_recommender
+
+docker run --name crop_app -p 8000:8000 attention824/crop_recommender
+```
 
 ## Using the App
 
@@ -106,7 +117,6 @@ or visit this URL :
 - Analysys page contains the details about the ml models
 - Open the prediction page to enter soil and climate data
 - Submit the form to receive a recommended crop prediction
-
 
 ## License
 
