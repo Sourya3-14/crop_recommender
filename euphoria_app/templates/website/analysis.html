@@ -1,0 +1,243 @@
+{% extends "layout.html" %} 
+{% load static %} 
+
+{% block content %}
+<div class="space-y-10 max-w-7xl mx-auto pb-12">
+  
+  <div class="text-center max-w-3xl mx-auto space-y-3">
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
+      Crop Recommendation Analysis
+    </h1>
+    <p class="text-gray-500 text-lg">
+      A concise technical report exploring environmental architectures, historical dataset insights, and predictive machine learning models.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center transform transition duration-200 hover:scale-[1.02]">
+      <p class="text-3xl sm:text-4xl font-black text-emerald-700">2,200</p>
+      <p class="text-gray-500 font-medium text-sm mt-1">Total Samples</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center transform transition duration-200 hover:scale-[1.02]">
+      <p class="text-3xl sm:text-4xl font-black text-emerald-700">22</p>
+      <p class="text-gray-500 font-medium text-sm mt-1">Crop Types</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center transform transition duration-200 hover:scale-[1.02]">
+      <p class="text-3xl sm:text-4xl font-black text-emerald-700">7</p>
+      <p class="text-gray-500 font-medium text-sm mt-1">Input Features</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center transform transition duration-200 hover:scale-[1.02]">
+      <p class="text-3xl sm:text-4xl font-black text-blue-700">99.50%</p>
+      <p class="text-gray-500 font-medium text-sm mt-1">Top Accuracy</p>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+      <span>📊</span> Dataset Overview
+    </h2>
+    <p class="text-gray-600 leading-relaxed">
+      The Crop Recommendation dataset consists of 2,200 observations covering 22 different crop types. Each record contains seven environmental and soil-related features that influence crop growth: Nitrogen (N), Phosphorus (P), Potassium (K), Temperature, Humidity, Soil pH, and Rainfall. The dataset is well balanced, with approximately 100 samples for each crop class, reducing the risk of class imbalance and improving model reliability.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 space-y-6">
+    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+      <span>📈</span> Feature Distributions
+    </h2>
+    <div class="w-full bg-gray-50 border border-gray-100 rounded-xl p-2 overflow-hidden flex justify-center">
+      <img 
+        src="{% static 'images/analysis/feature_distribution.png' %}" 
+        alt="Feature Distributions Grid" 
+        class="w-full max-h-[500px] object-contain rounded-lg"
+      />
+    </div>
+    <p class="text-gray-600 leading-relaxed">
+      The histograms data illustrates the distribution of each numerical feature used by the machine learning model. They provide insight into the range and frequency of soil nutrients and climatic conditions present in the dataset. Understanding these distributions helps identify variations in environmental conditions and ensures that the model is trained on diverse agricultural scenarios.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 space-y-6">
+    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+      <span>🌾</span> Crop Distribution
+    </h2>
+    <div class="w-full bg-gray-50 border border-gray-100 rounded-xl p-2 overflow-hidden flex justify-center">
+      <img 
+        src="{% static 'images/analysis/crop_distribution.png' %}" 
+        alt="Crop Target Balance Chart" 
+        class="w-full max-h-[400px] object-contain rounded-lg"
+      />
+    </div>
+    <p class="text-gray-600 leading-relaxed">
+      This chart displays the number of samples available for each crop category. The nearly uniform distribution confirms that the dataset is balanced across all 22 crop classes, enabling the model to learn each crop equally without bias toward any particular class.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 space-y-6">
+    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+      <span>🔥</span> Feature Correlation Heatmap
+    </h2>
+    <div class="max-w-2xl mx-auto bg-gray-50 border border-gray-100 rounded-xl p-2 overflow-hidden flex justify-center">
+      <img 
+        src="{% static 'images/analysis/correlation_heatmap.png' %}" 
+        alt="Feature Correlation Matrix Heatmap" 
+        class="w-full object-contain rounded-lg"
+      />
+    </div>
+    <p class="text-gray-600 leading-relaxed">
+      The correlation heatmap visualizes the relationships among the input features. Most variables exhibit low to moderate correlations, indicating that each feature contributes unique information to the prediction process. This diversity of information improves the effectiveness of the machine learning model by minimizing redundancy between features.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 space-y-6">
+    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+      <span>🤖</span> Machine Learning Model Comparison
+    </h2>
+    <p class="text-gray-600">
+      Multiple supervised machine learning algorithms were evaluated to determine the most suitable model for crop recommendation. The comparison below summarizes the classification accuracy achieved by each algorithm on the test dataset.
+    </p>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pt-2">
+      <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex justify-center items-center h-full min-h-[300px]">
+        <img 
+          src="{% static 'images/analysis/model_comparison.png' %}" 
+          alt="Model Accuracy Comparison Graph" 
+          class="w-full h-auto max-h-[320px] object-contain rounded-lg"
+        />
+      </div>
+
+      <div class="overflow-hidden border border-gray-200 rounded-xl shadow-sm">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-4 text-left font-bold text-gray-700 uppercase tracking-wider">Model</th>
+              <th scope="col" class="px-6 py-4 text-right font-bold text-gray-700 uppercase tracking-wider">Accuracy</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-100 text-gray-700 font-medium">
+            <tr class="bg-emerald-50/50">
+              <td class="px-6 py-3.5 flex items-center gap-2 font-bold text-emerald-900">
+                <span>🥇</span> Naive Bayes
+              </td>
+              <td class="px-6 py-3.5 text-right font-bold text-emerald-900">99.50%</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3.5 pl-11">Random Forest</td>
+              <td class="px-6 py-3.5 text-right">99.32%</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3.5 pl-11">Decision Tree</td>
+              <td class="px-6 py-3.5 text-right">98.77%</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3.5 pl-11">Artificial Neural Network</td>
+              <td class="px-6 py-3.5 text-right">98.64%</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3.5 pl-11">Support Vector Machine</td>
+              <td class="px-6 py-3.5 text-right">98.23%</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3.5 pl-11">Logistic Regression</td>
+              <td class="px-6 py-3.5 text-right">97.14%</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3.5 pl-11">K-Nearest Neighbors</td>
+              <td class="px-6 py-3.5 text-right">97.14%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-br from-emerald-700 to-emerald-800 text-white rounded-2xl shadow-lg p-6 md:p-8 border border-emerald-600/20">
+    <div class="max-w-3xl space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center gap-3">
+        Selected Model: Naive Bayes
+      </h2>
+      <p class="text-emerald-50 leading-relaxed text-base">
+        Naive Bayes was selected as the final deployment model due to its superior performance, achieving an accuracy of <strong>99.50%</strong>. In addition to its high predictive accuracy, the model offers fast inference, low computational requirements, and efficient memory usage, making it well suited for real-time web-based crop recommendation.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-2 text-sm">
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2.5 rounded-lg border border-white/10">
+          ✨ Highest Accuracy (99.50%)
+        </div>
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2.5 rounded-lg border border-white/10">
+          ⚡ Fast Inference Speed
+        </div>
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2.5 rounded-lg border border-white/10">
+          🪶 Ultra-Lightweight Footprint
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 space-y-6">
+    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+      <span>📉</span> Confusion Matrix
+    </h2>
+    <div class="w-full max-w-2xl mx-auto bg-gray-50 border border-gray-100 rounded-xl p-2 overflow-hidden flex justify-center">
+      <img 
+        src="{% static 'images/analysis/confusion_matrix_nb.png' %}" 
+        alt="Model Confusion Matrix Grid" 
+        class="w-full object-contain rounded-lg"
+      />
+    </div>
+    <p class="text-gray-600 leading-relaxed">
+      The confusion matrix illustrates the classification performance of the deployed Naive Bayes model. The concentration of values along the main diagonal indicates that the majority of crop classes are correctly predicted, while only a small number of samples are misclassified. This visualization demonstrates the robustness and reliability of the trained classifier.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 space-y-8">
+    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+      <span>⚙️</span> Prediction Workflow
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-9 gap-4 items-center relative text-center text-sm font-semibold text-gray-700">
+      
+      <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center min-h-[90px]">
+        <span class="text-emerald-700 text-lg mb-1">📋</span>
+        <p>User Input</p>
+        <span class="text-xs text-gray-400 font-normal mt-0.5">Soil & Climate</span>
+      </div>
+      
+      <div class="hidden md:flex justify-center text-emerald-600 text-xl font-bold">➔</div>
+
+      <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center min-h-[90px]">
+        <span class="text-emerald-700 text-lg mb-1">🛡️</span>
+        <p>Input Validation</p>
+        <span class="text-xs text-gray-400 font-normal mt-0.5">Type & Range Checks</span>
+      </div>
+
+      <div class="hidden md:flex justify-center text-emerald-600 text-xl font-bold">➔</div>
+
+      <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center min-h-[90px]">
+        <span class="text-emerald-700 text-lg mb-1">🧬</span>
+        <p>Feature Extraction</p>
+        <span class="text-xs text-gray-400 font-normal mt-0.5">Vector Packaging</span>
+      </div>
+
+      <div class="hidden md:flex justify-center text-emerald-600 text-xl font-bold">➔</div>
+
+      <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center min-h-[90px]">
+        <span class="text-emerald-800 text-lg mb-1">🧠</span>
+        <p class="text-emerald-900">Naive Bayes Model</p>
+        <span class="text-xs text-emerald-600 font-normal mt-0.5">Probability Compute</span>
+      </div>
+
+      <div class="hidden md:flex justify-center text-emerald-600 text-xl font-bold">➔</div>
+
+      <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center min-h-[90px]">
+        <span class="text-blue-700 text-lg mb-1">🎉</span>
+        <p class="text-blue-900">Recommended Crop</p>
+        <span class="text-xs text-blue-500 font-normal mt-0.5">Display UI Output</span>
+      </div>
+    </div>
+    
+    <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2">
+      The crop recommendation process begins with user-provided soil nutrient values and environmental conditions. These inputs are validated and transformed into a feature vector before being passed to the trained Naive Bayes classifier. The model then predicts the most suitable crop based on patterns learned from the training dataset, and the recommended crop is displayed to the user.
+    </p>
+  </div>
+</div>
+{% endblock %}

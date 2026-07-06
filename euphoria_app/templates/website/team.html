@@ -1,0 +1,80 @@
+{% extends "layout.html" %} {% load static %} {% block content %}
+<div class="space-y-8">
+  <div class="text-center max-w-2xl mx-auto space-y-2">
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">
+      Meet Our Team
+    </h1>
+    <p class="text-gray-500 text-base">
+      The structural architects behind the predictive analysis models and
+      engineering designs.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-6 pt-6">
+    <div
+      class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center"
+    >
+      <img
+        src="{% static 'images/team/sourya-euphoria.jpeg' %}"
+        class="w-48 h-48 mx-auto object-cover rounded-xl border border-gray-200 shadow-md mb-4"
+        alt="Sourya"
+      />
+      <h3 class="font-bold">Sourya Adhikary</h3>
+      <p class="text-emerald-700 text-sm">B.Tech CSE</p>
+      <p class="text-blue-800 text-sm">Heritage Institute of Technology</p>
+    </div>
+
+    <div
+      class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center"
+    >
+      <img
+        src="{% static 'images/team/ayush-euphoria.jpeg' %}"
+        class="w-48 h-48 mx-auto object-cover rounded-xl border border-gray-200 shadow-md mb-4"
+        alt="Ayush"
+      />
+      <h3 class="font-bold">Ayush Basak</h3>
+      <p class="text-emerald-700 text-sm">B.Tech CSE</p>
+      <p class="text-blue-800 text-sm">Heritage Institute of Technology</p>
+    </div>
+
+    <div
+      class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center"
+    >
+      <img
+        src="{% static 'images/team/mana-euphoria.jpeg' %}"
+        class="w-48 h-48 mx-auto object-cover rounded-xl border border-gray-200 shadow-md mb-4"
+        alt="Mana"
+      />
+      <h3 class="font-bold">Manashish Dhar</h3>
+      <p class="text-emerald-700 text-sm">B.Tech CSE</p>
+      <p class="text-blue-800 text-sm">Heritage Institute of Technology</p>
+    </div>
+
+    <div
+      class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center"
+    >
+      <img
+        src="{% static 'images/team/rudra-euphoria.jpeg' %}"
+        class="w-48 h-48 mx-auto object-cover rounded-xl border border-gray-200 shadow-md mb-4"
+        alt="Rudra"
+      />
+      <h3 class="font-bold">Rudra Roy</h3>
+      <p class="text-emerald-700 text-sm">B.Tech CSE</p>
+      <p class="text-blue-800 text-sm">Heritage Institute of Technology</p>
+    </div>
+
+    <div
+      class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center"
+    >
+      <img
+        src="{% static 'images/team/abhinaw-euphoria.png' %}"
+        class="w-48 h-48 mx-auto object-cover rounded-xl border border-gray-200 shadow-md mb-4"
+        alt="Avinaw"
+      />
+      <h3 class="font-bold">Avinaw Shah</h3>
+      <p class="text-emerald-700 text-sm">B.Tech IOT</p>
+      <p class="text-blue-700 text-sm">Heritage Institute of Technology</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+# development
+
+version: "3.9"
+services:
+  django:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
+
+  tailwind:
+    build: .
+    volumes:
+      - .:/app
+    command: python manage.py tailwind start
+    stdin_open: true
+    tty: true
+
+# production
+# version: "3.9"
+
+# services:
+#   django:
+#     image: attention824/euphoria_app-django:latest
+#     ports:
+#       - "8000:8000"
+#     command: >
+#       sh -c "
+#       python manage.py migrate &&
+#       python manage.py runserver 0.0.0.0:8000
+#       "
+
+# docker run --name django-app -p 8000:8000 --restart always attention824/euphoria_app-django:latest
+# docker run -d --name django-app -p 8000:8000 attention824/euphoria_app-django:latest

@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartCrop | Crop Recommendation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 font-sans text-gray-800 antialiased min-h-screen flex flex-col relative">
+    <nav class="bg-emerald-900 text-white shadow-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 relative">
+        <a href="{% url 'home' %}" class="flex items-center space-x-2 text-xl font-extrabold tracking-tight hover:opacity-90 transition">
+          <span class="text-emerald-400">🌱</span>
+          <span>SmartCrop</span>
+        </a>
+
+        <div class="hidden md:flex space-x-8 font-medium">
+          <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition-colors duration-200{% endif %}">Home</a>
+          <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition-colors duration-200{% endif %}">About</a>
+          <a href="{% url 'analysis' %}" class="{% if request.resolver_match.url_name == 'analysis' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition-colors duration-200{% endif %}">Analysis</a>
+          <a href="{% url 'predict' %}" class="{% if request.resolver_match.url_name == 'predict' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition-colors duration-200{% endif %}">Predict</a>
+          <a href="{% url 'team' %}" class="{% if request.resolver_match.url_name == 'team' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition-colors duration-200{% endif %}">Our Team</a>
+          <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition-colors duration-200{% endif %}">Contact</a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="outline-none p-2 hover:bg-emerald-800 rounded transition z-50">
+            <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div 
+          id="mobile-menu" 
+          class="hidden absolute top-16 right-6 w-48 bg-emerald-950/85 backdrop-blur-3xl border border-emerald-700/40 rounded-xl p-4 shadow-xl space-y-3 z-40 text-right"
+        >
+          <a href="{% url 'home' %}" class="block font-medium py-1 {% if request.resolver_match.url_name == 'home' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition{% endif %}">Home</a>
+          <a href="{% url 'about' %}" class="block font-medium py-1 {% if request.resolver_match.url_name == 'about' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition{% endif %}">About</a>
+          <a href="{% url 'analysis' %}" class="block font-medium py-1 {% if request.resolver_match.url_name == 'analysis' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition{% endif %}">Analysis</a>
+          <a href="{% url 'predict' %}" class="block font-medium py-1 {% if request.resolver_match.url_name == 'predict' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition{% endif %}">Predict</a>
+          <a href="{% url 'team' %}" class="block font-medium py-1 {% if request.resolver_match.url_name == 'team' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition{% endif %}">Our Team</a>
+          <a href="{% url 'contact' %}" class="block font-medium py-1 {% if request.resolver_match.url_name == 'contact' %}text-emerald-400 font-bold{% else %}hover:text-emerald-300 transition{% endif %}">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="grow max-w-7xl w-full mx-auto py-12 px-6">
+      {% block content %} {% endblock %}
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-6 border-t border-gray-800 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 text-center text-sm">
+        <p>&copy; 2026 SmartCrop Project. Empowering agriculture through data science.</p>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById("mobile-menu-button");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menu.classList.toggle("hidden");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!menu.classList.contains("hidden") && !menu.contains(e.target) && e.target !== btn) {
+          menu.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

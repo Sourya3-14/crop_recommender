@@ -1,0 +1,168 @@
+{% extends "layout.html" %} 
+{% load static %} 
+
+{% block content %}
+<div class="bg-white rounded-2xl shadow-md p-8 md:p-12">
+  <div class="border-b border-gray-100 pb-6 mb-8">
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">
+      Run Crop Prediction
+    </h1>
+    <p class="text-gray-500 mt-1">
+      Fill in the primary parameters below to generate custom ML recommendations.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <form class="lg:col-span-2 space-y-6" method="POST">
+      {% csrf_token %}
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Nitrogen (N) (kg/ha)</label>
+          <input
+            type="number"
+            placeholder="e.g. 70"
+            name="nitrogen"
+            value="{{ form.nitrogen.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.nitrogen.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.nitrogen.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.nitrogen.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Phosphorus (P) (kg/ha)</label>
+          <input
+            type="number"
+            placeholder="e.g. 40"
+            name="phosphorus"
+            value="{{ form.phosphorus.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.phosphorus.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.phosphorus.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.phosphorus.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Potassium (K) (kg/ha)</label>
+          <input
+            type="number"
+            placeholder="e.g. 45"
+            name="potassium"
+            value="{{ form.potassium.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.potassium.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.potassium.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.potassium.errors.0 }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Temperature (°C)</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="e.g. 24.5"
+            name="temperature"
+            value="{{ form.temperature.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.temperature.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.temperature.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.temperature.errors.0 }}</p>
+          {% endif %}
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Humidity (%)</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="e.g. 82.1"
+            name="humidity"
+            value="{{ form.humidity.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.humidity.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.humidity.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.humidity.errors.0 }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Soil pH Level</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="e.g. 6.5"
+            name="ph"
+            value="{{ form.ph.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.ph.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.ph.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.ph.errors.0 }}</p>
+          {% endif %}
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Rainfall (mm)</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="e.g. 202.4"
+            name="rainfall"
+            value="{{ form.rainfall.value|default_if_none:'' }}"
+            class="w-full bg-gray-50 border {% if form.rainfall.errors %}border-red-500 focus:ring-red-500{% else %}border-gray-300 focus:ring-emerald-500{% endif %} rounded-lg px-4 py-2.5 focus:ring-2 focus:outline-none"
+          />
+          {% if form.rainfall.errors %}
+            <p class="text-red-600 text-xs mt-1 font-medium">{{ form.rainfall.errors.0 }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-emerald-800 transition tracking-wide shadow-md"
+      >
+        Analyze Parameters & Recommend
+      </button>
+    </form>
+
+    <div class="bg-emerald-50 rounded-xl p-6 flex flex-col justify-between border border-emerald-100">
+      <div>
+        <h3 class="text-lg font-bold text-emerald-950 mb-2">
+          Prediction Engine Output
+        </h3>
+        <p class="text-sm text-emerald-800 leading-relaxed">
+          The structural Naive Bayes architecture evaluates parameters in real-time to find optimal crop ecosystem compatibility.
+        </p>
+      </div>
+      
+      <div class="mt-6 border-4 border-dashed border-emerald-200 rounded-lg p-5 text-center text-emerald-600 font-semibold bg-white/60 flex flex-col items-center justify-center min-h-[220px]">
+        {% if prediction %}
+          <div class="text-xs uppercase tracking-wider font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full mb-3">
+            Recommended Crop
+          </div>
+          
+          <div class="w-32 h-32 mb-3 bg-gray-100 rounded-xl overflow-hidden shadow-inner border border-emerald-200/50">
+            <img 
+              src="{% get_static_prefix %}{{ crop_image_path }}" 
+              alt="{{ prediction }}" 
+              class="w-full h-full object-cover"
+              onerror="this.onerror=null; this.src='{% static 'images/crop/placeholder.jpg' %}'; this.className='w-full h-full object-cover opacity-40';"
+            />
+          </div>
+
+          <div class="text-3xl font-black text-emerald-900 tracking-tight capitalize">
+            {{ prediction }}
+          </div>
+        {% else %} 
+          <span class="text-sm text-emerald-700/70 font-medium">Waiting for evaluation inputs...</span> 
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

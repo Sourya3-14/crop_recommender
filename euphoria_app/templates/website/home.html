@@ -1,0 +1,68 @@
+{% extends "layout.html" %} 
+{% load static %}
+{% block content %}
+<div class="space-y-12">
+  <div
+    class="bg-gradient-to-r from-emerald-800 to-teal-700 rounded-2xl shadow-xl overflow-hidden text-white p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8"
+  >
+    <div class="max-w-xl space-y-6">
+      <h1 class="text-4xl md:text-5xl font-black leading-tight">
+        Optimize Your Yield with Machine Learning
+      </h1>
+      <p class="text-emerald-100 text-lg">
+        Maximize farming efficiency by leveraging advanced data science. Input
+        your soil profiles and weather conditions to instantly discover the most
+        optimal crops to cultivate.
+      </p>
+      <div class="pt-2">
+        <a
+          href="{% url 'predict' %}"
+          class="inline-block bg-white text-emerald-900 font-bold px-6 py-3 rounded-lg shadow hover:bg-emerald-50 transition transform hover:-translate-y-0.5"
+        >
+          Start Recommendation
+        </a>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2">
+      <img
+        src="{% static 'images/crop-image.jpg' %}"
+        alt="Precision Agriculture"
+        class="rounded-xl shadow-2xl object-cover h-64 w-full"
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div
+      class="bg-white rounded-xl shadow-md p-6 border-t-4 border-emerald-600"
+    >
+      <div class="text-3xl mb-3">🧪</div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Soil Analysis</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        We take critical NPK metrics, pH levels into account
+        to ensure complete biological compatibility.
+      </p>
+    </div>
+    <div
+      class="bg-white rounded-xl shadow-md p-6 border-t-4 border-emerald-600"
+    >
+      <div class="text-3xl mb-3">🌦️</div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Climate Tracking</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        Temperature, humidity and rainfall metrics are directly fed into predictive models
+        to safeguard crops against harsh seasons.
+      </p>
+    </div>
+    <div
+      class="bg-white rounded-xl shadow-md p-6 border-t-4 border-emerald-600"
+    >
+      <div class="text-3xl mb-3">📈</div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Data-Driven Yield</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        Mitigate farming risks and boost overall economic profitability using
+        highly accurate data predictions.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
