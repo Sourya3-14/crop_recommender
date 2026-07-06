@@ -1,6 +1,6 @@
-# Euphoria Crop Recommendation Project
+# Crop Recommendation Project
 
-Euphoria is a full-stack web application for crop recommendation. It combines a Django-based web interface with a machine learning model built in a Jupyter notebook to predict suitable crops based on soil and climate input values.
+SmartCrop is a full-stack web application for crop recommendation. It combines a Django-based web interface with a machine learning model built in a Jupyter notebook to predict suitable crops based on soil and climate input values.
 
 ## Project Overview
 
