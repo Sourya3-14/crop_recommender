@@ -101,13 +101,16 @@ Then open your browser and visit :
 
 ## Running Using docker
 
-run the folloing commands and visit : http://127.0.0.1:8000/
-
+pull the image and run the container:
 ```
 docker pull attention824/crop_recommender
 
 docker run --name crop_app -p 8000:8000 attention824/crop_recommender
 ```
+
+Then open your browser and visit :
+
+- http://127.0.0.1:8000/
 
 ## Using the App
 
