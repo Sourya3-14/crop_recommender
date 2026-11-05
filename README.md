@@ -2,7 +2,7 @@
 
 SmartCrop is a full-stack web application for crop recommendation. It combines a Django-based web interface with a machine learning model built in a Jupyter notebook to predict suitable crops based on soil and climate input values.
 
-**[Live Application Link](http://13.207.72.59:8000/)**
+**[Live Application Link](https://crop-recommender-zpd4.onrender.com)**
 
 ## Project Overview
 
