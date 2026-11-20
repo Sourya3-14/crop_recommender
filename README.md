@@ -4,6 +4,8 @@ SmartCrop is a full-stack web application for crop recommendation. It combines a
 
 **[Live Application Link](https://crop-recommender-zpd4.onrender.com)**
 
+**[Docker hub Image Link](http://hub.docker.com/r/attention824/crop_recommender)**
+
 ## Project Overview
 
 This project includes:
