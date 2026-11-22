@@ -11,7 +11,7 @@ class CropPredictionForm(forms.Form):
     )
 
     phosphorus = forms.FloatField(
-        min_value=5,
+        min_value=0,
         max_value=150,
         error_messages={
             "min_value": "Phosphorus must be at least 5",
@@ -20,7 +20,7 @@ class CropPredictionForm(forms.Form):
     )
 
     potassium = forms.FloatField(
-        min_value=5,
+        min_value=0,
         max_value=210,
         error_messages={
             "min_value": "Potassium must be at least 5",
