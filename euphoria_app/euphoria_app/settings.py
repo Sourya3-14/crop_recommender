@@ -25,7 +25,19 @@ SECRET_KEY = 'django-insecure-va6t7wv0a2=yg^i=@2!^0-rqc49=vw#2cnsq&hzo57u)@mv)69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["crop-recommender-zpd4.onrender.com"]
+ALLOWED_HOSTS = [
+    "crop-recommender-zpd4.onrender.com",
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://crop-recommender-zpd4.onrender.com",
+    "https://*.onrender.com",
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Application definition
